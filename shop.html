@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magazin - Zeul Oriental</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/cart.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <style>
+        /* Stil pentru titlul secțiunii Magazin */
+        .product-gallery h2 {
+            font-family: 'Playfair Display', serif; /* Font elegant */
+            font-size: 36px;
+            font-weight: 700;
+            color: brown; /* Culoare elegantă pentru titlu */
+            text-align: center;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .product-gallery p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<script src="js/cart.js" defer></script>
+
+<body>
+    <header>
+        <h1>Zeul Oriental - Magazin</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre</a></li>
+                <li><a href="shop.html">Magazin</a></li>
+                <li><a href="gift.html">Cadouri</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Coș (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Secțiunea cu produse din magazin -->
+    <section class="product-gallery">
+        <h2>Descoperă parfumuri orientale unice, fiecare cu o poveste fascinantă din misterele Orientului</h2>
+        <p>Fiecare parfum din colecția noastră este inspirat de tradițiile și ritualurile orientale, cu arome care te vor transporta într-o lume de eleganță și rafinament.</p>
+
+        <!-- Parfum 1 -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/1190829/pexels-photo-1190829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 1" class="product-image">
+            <h3>Layali Al-Amber - 50 ml</h3>
+            <p>Aroma misterioasă de ambra și trandafir arabesc. Un parfum care evocă nopțile calde din deșertul arab, plin de eleganță și rafinament.</p>
+            <p class="price">200 lei</p>
+
+            <!-- Formular de gravură -->
+            <label for="engraving-text-1">Text gravură (Maxim 20 caractere):</label>
+            <input type="text" id="engraving-text-1" class="engraving-text" maxlength="20" placeholder="Introduceti textul pentru gravură" />
+            
+            <label for="engraving-font-1">Alege fontul:</label>
+            <select id="engraving-font-1" class="engraving-font">
+                <option value="font1">Font 1</option>
+                <option value="font2">Font 2</option>
+                <option value="font3">Font 3</option>
+                <option value="font4">Font 4</option>
+                <option value="font5">Font 5</option>
+            </select>
+
+            <button class="add-to-cart" data-name="Parfum Oriental - 50 ml" data-price="200">Adaugă în coș</button>
+        </div>
+
+        <!-- Parfum 2 -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/29614397/pexels-photo-29614397/free-photo-of-elegant-perfume-bottle-on-sand-dunes.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 2" class="product-image">
+            <h3>Al-Qamar Al-Dhahabi - 30 ml</h3>
+            <p>Note florale de iasomie și ulei de argan, un parfum care îmbină tradiția cu modernitatea. Ideal pentru momentele speciale.</p>
+            <p class="price">180 lei</p>
+            <button class="add-to-cart" data-name="Al-Qamar Al-Dhahabi - 30 ml" data-price="180">Adaugă în coș</button>
+        </div>
+
+        <!-- Parfum 3 -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/932577/pexels-photo-932577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 3" class="product-image">
+            <h3>Shams Al-Riwaya - 100 ml</h3>
+            <p>Un amestec vibrant de citrice și mirodenii, care aduce energia soarelui în fiecare zi. Parfumul perfect pentru zilele calde de vară.</p>
+            <p class="price">250 lei</p>
+            <button class="add-to-cart" data-name="Shams Al-Riwaya - 100 ml" data-price="250">Adaugă în coș</button>
+        </div>
+
+        <!-- Parfum 4 -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/264870/pexels-photo-264870.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 4" class="product-image">
+            <h3>Ruh Al-Bustan - 50 ml</h3>
+            <p>Note de mosc, oud și condimente orientale, care te vor transporta în inima piețelor tradiționale arabe, pline de viață și culoare.</p>
+            <p class="price">220 lei</p>
+            <button class="add-to-cart" data-name="Ruh Al-Bustan - 50 ml" data-price="220">Adaugă în coș</button>
+        </div>
+
+        <!-- Parfum 5 (Adăugat) -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/965993/pexels-photo-965993.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 5" class="product-image">
+            <h3>Oasis of Dreams - 50 ml</h3>
+            <p>Un parfum subtil de lăcrămioare și lemn de santal, care te transportă într-o oază de liniște și mister din inima Orientului.</p>
+            <p class="price">210 lei</p>
+            <button class="add-to-cart" data-name="Oasis of Dreams - 50 ml" data-price="210">Adaugă în coș</button>
+        </div>
+
+        <!-- Parfum 6 (Adăugat) -->
+        <div class="product fade-in">
+            <img src="https://images.pexels.com/photos/4735906/pexels-photo-4735906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Parfum oriental 6" class="product-image">
+            <h3>Golden Sands - 30 ml</h3>
+            <p>Note de vanilie și mir, un parfum cald și dulce, ce evocă senzația unei plaje aurii sub soarele arzător al Orientului.</p>
+            <p class="price">190 lei</p>
+            <button class="add-to-cart" data-name="Golden Sands - 30 ml" data-price="190">Adaugă în coș</button>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Zeul Oriental. Toate drepturile rezervate.</p>
+    </footer>
+</body>
+</html>

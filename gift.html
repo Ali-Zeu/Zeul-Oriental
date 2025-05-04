@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadouri - Zeul Oriental</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Stiluri pentru secțiunea Cadouri */
+        .gift {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .gift h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: brown;
+            margin-bottom: 20px;
+        }
+
+        .gift p {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .gift-boxes {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .gift-box {
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .gift-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .gift-box h3 {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .gift-box p {
+            font-size: 14px;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        .gift-box input {
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+  <h1>Zeul Oriental - Cadouri</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Acasă</a></li>
+      <li><a href="about.html">Despre</a></li>
+      <li><a href="shop.html">Magazin</a></li>
+      <li><a href="gift.html">Cadouri</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html" id="cart-button">🛒 Coș (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="gift">
+    <h2>Cadouri Speciale</h2>
+    <p>Adaugă o cutie specială pentru doar 20 lei</p>
+
+    <!-- Galerie cu cutii cadou -->
+    <div class="gift-boxes">
+      
+
+    <!-- Secțiune pentru adăugarea cutiei cadou -->
+   <form id="gift-form">
+    <h3>Alege o cutie cadou:</h3>
+
+    <label>
+        <input type="radio" name="gift-box" value="Cutie LUX"
+               data-image="https://images.pexels.com/photos/5632349/pexels-photo-5632349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img src="https://images.pexels.com/photos/5632349/pexels-photo-5632349.jpeg?auto=compress&cs=tinysrgb&w=300"
+             alt="Cutie LUX" width="150">
+        <p>Cutie LUX - Design alb-negru rafinat, ideală pentru un cadou elegant și sofisticat</p>
+    </label>
+
+    <label>
+        <input type="radio" name="gift-box" value="Cutie Elegantă"
+               data-image="https://images.pexels.com/photos/3927233/pexels-photo-3927233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img src="https://images.pexels.com/photos/3927233/pexels-photo-3927233.jpeg?auto=compress&cs=tinysrgb&w=300"
+             alt="Cutie Elegantă" width="150">
+        <p>Cutie Elegantă - Design modern cu detalii aurii</p>
+    </label>
+
+    <label>
+        <input type="radio" name="gift-box" value="Cutie Exotică"
+               data-image="https://images.pexels.com/photos/4397882/pexels-photo-4397882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img src="https://images.pexels.com/photos/4397882/pexels-photo-4397882.jpeg?auto=compress&cs=tinysrgb&w=300"
+             alt="Cutie Exotică" width="150">
+        <p>Cutie Exotică - Cutie pastel roz-albastru, cu un aer jucăuș și delicat – perfectă pentru ocazii vesele</p>
+    </label>
+
+    <label>
+        <input type="radio" name="gift-box" value="Cutie Romantica"
+               data-image="https://images.pexels.com/photos/4397839/pexels-photo-4397839.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+        <img src="https://images.pexels.com/photos/4397839/pexels-photo-4397839.jpeg?auto=compress&cs=tinysrgb&w=300"
+             alt="Cutie Romantica" width="150">
+        <p>Cutie Romantica - Roșu intens cu detalii elegante, perfectă pentru momente speciale în doi</p>
+    </label>
+
+    <div>
+        <input type="checkbox" id="gift-box" onclick="toggleGiftBox()">
+        <label for="gift-box">Adaugă cutia selectată în coș (20 lei)</label>
+    </div>
+</form>
+
+</section>
+
+<footer>
+    <p>&copy; 2025 Zeul Oriental. Toate drepturile rezervate.</p>
+</footer>
+
+
+<script>
+    // Adaugă în localStorage un produs
+    function addToCart(product) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Verificăm dacă cutia este deja în coș
+        const exists = cart.some(item => item.id === product.id);
+        if (!exists) {
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(`"${product.name}" a fost adăugată în coș.`);
+        } else {
+            alert(`"${product.name}" este deja în coș.`);
+        }
+    }
+
+    // Actualizează numărul de produse din coș
+    function updateCartCount() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cart-count').innerText = cart.length;
+    }
+
+    // Apelează această funcție când se bifează opțiunea de cadou
+    function toggleGiftBox() {
+        const giftBoxCheckbox = document.getElementById('gift-box');
+        const selectedBox = document.querySelector('input[name="gift-box"]:checked');
+
+        if (giftBoxCheckbox.checked && selectedBox) {
+            const boxValue = selectedBox.value;
+
+            const product = {
+                id: 'gift-box-' + boxValue, // id unic
+                name: boxValue,
+                price: 20,
+                image: selectedBox.dataset.image || '', // imaginea cutiei
+                quantity: 1
+            };
+
+            addToCart(product);
+        } else if (giftBoxCheckbox.checked) {
+            alert("Selectează o cutie cadou din opțiunile disponibile.");
+            giftBoxCheckbox.checked = false;
+        }
+    }
+
+    // Actualizează numărul de produse la încărcare
+    window.onload = updateCartCount;
+</script>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizare comandă - Zeul Oriental</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Finalizare comandă</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre</a></li>
+                <li><a href="shop.html">Magazin</a></li>
+                <li><a href="gift.html">Cadouri</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Coș (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Secțiunea pentru completarea comenzii -->
+    <section class="checkout-form">
+        <h2>Completează detaliile comenzii tale</h2>
+        <form id="order-form">
+            <label for="first-name">Nume:</label>
+            <input type="text" id="first-name" name="first-name" required></p>
+
+           <p> <label for="last-name">Prenume:</label>
+            <input type="text" id="last-name" name="last-name" required></p>
+
+           <p> <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required></p>
+
+           <p> <label for="delivery-address">Adresă de livrare:</label>
+            <input type="text" id="delivery-address" name="delivery-address" required></p>
+
+          <p>  <label for="payment-method">Metoda de plată:</label>
+            <select id="payment-method" name="payment-method" required>
+                <option value="card">Card bancar</option>
+                <option value="cash">Plată la livrare</option>
+				<option value="cash">Apple Pay</option>
+				<option value="cash">Google Pay</option>
+            </select>
+
+            <button type="submit">Trimite comanda</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Zeul Oriental. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        // Aici vom manipula trimiterea comenzii și afișarea mesajului de mulțumire
+        document.getElementById("order-form").addEventListener("submit", function(event) {
+            event.preventDefault(); // Previne trimiterea implicită a formularului
+
+            // Colectăm datele din formular
+            const formData = new FormData(this);
+
+            // Creăm un obiect pentru a salva datele
+            const orderData = {};
+            formData.forEach((value, key) => {
+                orderData[key] = value;
+            });
+
+            // Afișăm mesajul de mulțumire
+            const confirmationMessage = `
+                <h2>Mulțumim pentru comanda ta!</h2>
+                <p>Comanda ta a fost procesată cu succes. Veți primi în curând un email de confirmare. Așteptăm cu drag să vă mai avem ca și clienți!</p>
+            `;
+
+            // Înlocuim conținutul secțiunii checkout cu mesajul de mulțumire
+            document.querySelector(".checkout-form").innerHTML = confirmationMessage;
+
+            // Simulăm trimiterea unui email (de fapt, doar un mesaj în consolă)
+            console.log("Trimitem email de confirmare la: " + orderData.email);
+            alert("Comanda ta a fost trimisă! Veți primi un email de confirmare.");
+        });
+    </script>
+</body>
+</html>

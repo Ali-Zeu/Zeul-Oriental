@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zeul Oriental - Parfumuri De Colectie</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<script src="js/cart.js"></script>
+<body>
+    <header>
+        <h1>Zeul Oriental - Contact</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre</a></li>
+                <li><a href="shop.html">Magazin</a></li>
+                <li><a href="gift.html">Cadouri</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Secțiunea de contact -->
+    <section>
+        <h2>Informații de Contact</h2>
+
+        <div class="contact-details">
+            <p><strong>Sediul nostru:</strong> Bd Unirii nr 10, București, România</p>
+            <p><strong>Email:</strong> <a href="mailto:zeuloriental@gmail.com">zeuloriental@gmail.com</a></p>
+            <p><strong>Telefon:</strong> 0769696969</p>
+        </div>
+
+        <!-- Harta Google Maps -->
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2849.3040536850413!2d26.09154828609048!3d44.426924896497304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ffe959a953a1%3A0x8fdb3804b47886d3!2sBulevardul%20Unirii%2010%2C%20Bucure%C8%99ti%20040105!5e0!3m2!1sen!2sro!4v1746355400094!5m2!1sen!2sro" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Formular de contact -->
+        <div class="contact-form">
+            <h2>Trimite-ne un mesaj</h2>
+            <form id="contactForm" action="mailto:zeuloriental@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Numele tău:</label>
+                <input type="text" id="name" name="name" required placeholder="Introduceti numele complet"></p>
+
+               <p> <label for="email">Adresa ta de email:</label>
+                <input type="email" id="email" name="email" required placeholder="Introduceti adresa de email"></p>
+
+                <p> <label for="subject">Subiect:</label>
+                <input type="text" id="subject" name="subject" required placeholder="Introduceti subiectul mesajului"></p>
+
+                <p> <label for="message">Mesaj:</label>
+                <textarea id="message" name="message" rows="4" required placeholder="Scrie mesajul tău aici..."></textarea>
+
+                <button type="submit">Trimite mesajul</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Popup de mulțumire -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>Mulțumim!</h2>
+            <p>Mesajul tău a fost trimis cu succes. Ne vom face timp să te contactăm cât mai curând posibil.</p>
+            <button onclick="closePopup()">Închide</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Zeul Oriental - Toate drepturile rezervate</p>
+    </footer>
+
+    <!-- Codul JavaScript -->
+    <script>
+        // Functie pentru a deschide popup-ul
+        function showPopup() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Functie pentru a închide popup-ul
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Așteaptă trimiterea formularului
+        document.getElementById('contactForm').onsubmit = function(event) {
+            event.preventDefault();  // Previne trimiterea formularului pentru a arăta popup-ul
+            showPopup();  // Afișează popup-ul
+            setTimeout(function() {
+                // Trimite formularul după 3 secunde (după ce popup-ul dispare)
+               
+            }, 3000); // Trimite formularul după 3 secunde
+        };
+    </script>
+
+</body>
+</html>

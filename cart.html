@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coș - Zeul Oriental</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/cart.js" defer></script> <!-- Fișierul JS pentru logica coșului -->
+</head>
+<body>
+    <header>
+        <h1>Coșul meu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Acasă</a></li>
+                <li><a href="about.html">Despre</a></li>
+                <li><a href="shop.html">Magazin</a></li>
+                <li><a href="gift.html">Cadouri</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html">Coș (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Secțiunea Coș -->
+    <section class="cart">
+        <h2>Produse în coș</h2>
+        <div id="cart-items">
+            <!-- Produsele vor apărea aici -->
+        </div>
+
+        <div id="cart-total">
+            <h3>Total: 0 lei</h3>
+        </div>
+
+       <button id="checkout-button">
+    <a href="checkout.html">Finalizează comanda</a>
+</button>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Zeul Oriental. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        // Aici vom manipula localStorage și vom afișa produsele din coș
+        document.addEventListener("DOMContentLoaded", function() {
+            const cartItemsContainer = document.getElementById("cart-items");
+            const cartTotalContainer = document.getElementById("cart-total");
+
+            // Obținem produsele din coș din localStorage
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = "<p>Coșul tău este gol.</p>";
+                cartTotalContainer.innerHTML = "<h3>Total: 0 lei</h3>";
+            } else {
+                // Resetează conținutul înainte de a adăuga produsele
+                cartItemsContainer.innerHTML = "";
+
+                let total = 0; // Inițializăm totalul la 0
+
+                cart.forEach((item, index) => {
+                    // Verificăm dacă price și engravingCost sunt numere valide
+                    const price = parseFloat(item.price) || 0; // Dacă price nu este un număr valid, îl setăm la 0
+                    const engravingCost = parseFloat(item.engravingCost) || 0; // La fel pentru engravingCost
+
+                    // Creăm un element HTML pentru fiecare produs
+                    const productElement = document.createElement("div");
+                    productElement.classList.add("cart-item");
+                    productElement.setAttribute("id", `item-${index}`); // Setăm un ID unic pentru fiecare produs
+
+                    productElement.innerHTML = `
+                        <h4>${item.name}</h4>
+                        <p>Preț: ${price} lei</p>
+                        <p>Gravură: ${item.engravingText ? item.engravingText : "N/A"} (${item.engravingFont})</p>
+                        <p>Cost gravură: ${engravingCost} lei</p>
+                        <button class="remove-item" data-index="${index}">Șterge</button>
+                    `;
+
+                    cartItemsContainer.appendChild(productElement);
+                    total += price + engravingCost; // Calculăm totalul adunând prețul și costul gravurii
+                });
+
+                // Afișăm totalul coșului
+                cartTotalContainer.innerHTML = `<h3>Total: ${total.toFixed(2)} lei</h3>`;
+            }
+
+            // Adăugăm un event listener pentru butoanele de ștergere
+            const removeButtons = document.querySelectorAll(".remove-item");
+            removeButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const index = button.getAttribute("data-index"); // Obținem indexul produsului
+                    cart.splice(index, 1); // Eliminăm produsul din coș
+
+                    // Actualizăm localStorage
+                    localStorage.setItem("cart", JSON.stringify(cart));
+
+                    // Reîmprospătăm pagina pentru a actualiza coșul
+                    location.reload();
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
